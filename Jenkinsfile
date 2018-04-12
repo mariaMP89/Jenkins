@@ -8,7 +8,7 @@ node {
    
    // -- Configura variables
       steps { 
-        bat 'echo 'Configurando variables''
+        sh 'echo "Configurando variables"'
  
       }
    }
