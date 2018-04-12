@@ -58,16 +58,16 @@ echo 'Configurando variables'
    }
    //Pruebaaaa ramas paralelas
    
-   stage('run-parallel-branches') {
-  steps {
-    parallel(
-      a: {
-        echo "This is branch a"
-      },
-      b: {
-        echo "This is branch b"
+   stage ('Ramas Paralelas') {
+      steps {
+       parallel(
+          a: {
+            echo "This is branch a"
+             },
+          b: {
+             echo "This is branch b"
+             }
+             )
+          }
       }
-    )
-  }
-}
 }
