@@ -8,8 +8,8 @@ node {
    
    // -- Configura variables
       steps { 
-        sh 'echo "Configurando variables"'
- 
+        //sh 'echo "Configurando variables"'
+       sh 'fail me please'
       }
    }
 }
