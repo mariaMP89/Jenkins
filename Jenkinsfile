@@ -53,7 +53,7 @@ echo 'Configurando variables'
    // ------------------------------------
    stage ('Subida Nexus'){
       steps {
-     echo 'Subida a nexus delpaquete generado en Jenkins'
+     shell('echo Hello World!')
       }
    }
 }
