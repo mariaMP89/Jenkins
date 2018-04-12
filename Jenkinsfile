@@ -1,8 +1,5 @@
 #!groovy
 
-
-#!groovy
-
 node {
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
