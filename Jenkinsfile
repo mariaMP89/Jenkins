@@ -4,8 +4,7 @@ node {
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
    // ------------------------------------
-   stage 'Build'{
-      
+   stage 'Build'      
    // -- Configura variables
 
    echo 'Configurando variables'
@@ -16,11 +15,11 @@ node {
    
     // -- Descarga código desde SCM lqp-ang5
     echo 'Descargando lqp de SCM'
-   }
+   
    // ------------------------------------
    // -- ETAPA: Compilar
    // ------------------------------------
-   stage 'Compilar'{
+   stage 'Compilar'
    
    // -- Configura variables
    echo 'Configurando variables'
@@ -29,30 +28,30 @@ node {
    // -- Compilando
    echo 'Compilando aplicación'
   
-   }
+   
    // ------------------------------------
    // -- ETAPA: Test
    // ------------------------------------
-   stage 'Test'{
+   stage 'Test'
    echo 'Ejecutando tests'
-   }
+   
       // ------------------------------------
    // -- ETAPA: Sonar
    // ------------------------------------
-   stage 'Sonar'{
+   stage 'Sonar'
    echo 'Ejecutando pruebas Sonar'
-   }
+   
    // ------------------------------------
    // -- ETAPA: Empaquetado y versionado
    // ------------------------------------
-   stage 'Empaquetar y versionado'{
+   stage 'Empaquetar y versionado'
    echo 'Instala el paquete generado en el repositorio maven'
    
-   }
+   
    // ------------------------------------
    // -- ETAPA: Nexus
    // ------------------------------------
-   stage 'Subida Nexus'{
+   stage 'Subida Nexus'
    echo 'Subida a nexus delpaquete generado en Jenkins'
-   }
+   
 }
