@@ -17,7 +17,6 @@ node {
     // -- Descarga código desde SCM lqp-ang5
     echo 'Descargando lqp de SCM'
       
-  }
    // ------------------------------------
    // -- ETAPA: Compilar
    // ------------------------------------
