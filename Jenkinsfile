@@ -4,17 +4,17 @@ node {
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
    // ------------------------------------
-   stage 'Build'      
+   stage 'Build'
+   
    // -- Configura variables
-
-   echo 'Configurando variables'
+    echo 'Configurando variables'
   
            
    // -- Descarga código desde SCM node-ang5
-   echo 'Descargando estructura de SCM '
+  echo 'Descargando estructura de SCM '
    
     // -- Descarga código desde SCM lqp-ang5
-    echo 'Descargando lqp de SCM'
+  echo 'Descargando lqp de SCM'
    
    // ------------------------------------
    // -- ETAPA: Compilar
@@ -40,7 +40,7 @@ node {
    // ------------------------------------
    stage 'Sonar'
    echo 'Ejecutando pruebas Sonar'
-   
+    
    // ------------------------------------
    // -- ETAPA: Empaquetado y versionado
    // ------------------------------------
