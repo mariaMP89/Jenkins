@@ -4,19 +4,19 @@ node {
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
    // ------------------------------------
-   stage ('Build'){
+   stage ('Build') {
    
    // -- Configura variables
       steps { 
          echo 'Configurando variables'
   
-            }
+           
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
    
     // -- Descarga código desde SCM lqp-ang5
    echo 'Descargando lqp de SCM'
-  
+   }
    }
    // ------------------------------------
    // -- ETAPA: Compilar
