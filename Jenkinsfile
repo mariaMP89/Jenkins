@@ -2,6 +2,27 @@
 
 node {
    // ------------------------------------
+   // -- ETAPA: Construccion Proyecto angularCLi
+   // ------------------------------------
+   stage 'Build'
+   
+   // -- Configura variables
+   echo 'Configurando variables'
+   def mvnHome = tool 'M3'
+   env.PATH = "${mvnHome}/bin:${env.PATH}"
+   echo "var mvnHome='${mvnHome}'"
+   echo "var env.PATH='${env.PATH}'"
+   
+   // -- Descarga código desde SCM node-ang5
+   echo 'Descargando estructura de SCM '
+   sh 'rm -rf *'
+   checkout scm
+    // -- Descarga código desde SCM lqp-ang5
+   echo 'Descargando lqp de SCM'
+   sh 'rm -rf *'
+   checkout scm
+   
+   // ------------------------------------
    // -- ETAPA: Compilar
    // ------------------------------------
    stage 'Compilar'
@@ -12,11 +33,6 @@ node {
    env.PATH = "${mvnHome}/bin:${env.PATH}"
    echo "var mvnHome='${mvnHome}'"
    echo "var env.PATH='${env.PATH}'"
-   
-   // -- Descarga código desde SCM
-   echo 'Descargando código de SCM'
-   sh 'rm -rf *'
-   checkout scm
    
    // -- Compilando
    echo 'Compilando aplicación'
@@ -36,18 +52,23 @@ node {
          currentBuild.result = 'FAILURE'
       throw err
    }
-   
+      // ------------------------------------
+   // -- ETAPA: Sonar
    // ------------------------------------
-   // -- ETAPA: Instalar
+   stage 'SOnar'
+   echo 'Ejecutando pruebas Sonar'
+    
    // ------------------------------------
-   stage 'Instalar'
+   // -- ETAPA: Empaquetado y versionado
+   // ------------------------------------
+   stage 'Empaquetar y versionado'
    echo 'Instala el paquete generado en el repositorio maven'
    sh 'mvn install -Dmaven.test.skip=true'
    
    // ------------------------------------
-   // -- ETAPA: Archivar
+   // -- ETAPA: Nexus
    // ------------------------------------
-   stage 'Archivar'
-   echo 'Archiva el paquete el paquete generado en Jenkins'
+   stage 'Subida Nexus'
+   echo 'Subida a nexus delpaquete generado en Jenkins'
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar, **/target/*.war', fingerprint: true])
 }
