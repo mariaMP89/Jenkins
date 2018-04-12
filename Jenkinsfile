@@ -7,7 +7,7 @@ node {
    stage 'Build'
    
    // -- Configura variables
-    echo 'Configurando variables'
+   step( echo 'Configurando variables')
   
            
    // -- Descarga código desde SCM node-ang5
