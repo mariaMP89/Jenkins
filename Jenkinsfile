@@ -1,4 +1,6 @@
-pipeline {
+#!groovy
+
+node {
     
     stages {
         stage('Example Build') {
