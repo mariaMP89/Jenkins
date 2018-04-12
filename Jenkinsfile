@@ -8,15 +8,15 @@ node {
    
    // -- Configura variables
       steps { 
-         echo 'Configurando variables'
+         sh 'echo 'Configurando variables''
   
            
    // -- Descarga código desde SCM node-ang5
-   echo 'Descargando estructura de SCM '
+   sh 'echo 'Descargando estructura de SCM ''
    
     // -- Descarga código desde SCM lqp-ang5
-   echo 'Descargando lqp de SCM'
-   }
+   sh 'echo 'Descargando lqp de SCM''
+      }
    }
    // ------------------------------------
    // -- ETAPA: Compilar
