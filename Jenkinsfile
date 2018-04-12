@@ -52,8 +52,22 @@ echo 'Configurando variables'
    // -- ETAPA: Nexus
    // ------------------------------------
    stage ('Subida Nexus'){
-      steps {
+     
      shell('echo Hello World!')
-      }
+      
    }
+   //Pruebaaaa ramas paralelas
+   
+   stage('run-parallel-branches') {
+  steps {
+    parallel(
+      a: {
+        echo "This is branch a"
+      },
+      b: {
+        echo "This is branch b"
+      }
+    )
+  }
+}
 }
