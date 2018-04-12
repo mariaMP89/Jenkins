@@ -53,7 +53,7 @@ echo 'Configurando variables'
    // ------------------------------------
    stage ('Subida Nexus'){
       steps {
-       step(  echo 'Subida a nexus delpaquete generado en Jenkins)
+     echo 'Subida a nexus delpaquete generado en Jenkins
       }
    }
 }
