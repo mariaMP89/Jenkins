@@ -7,7 +7,7 @@ node {
    stage 'Build'
    
    // -- Configura variables
-   step( echo 'Configurando variables')
+echo 'Configurando variables'
   
            
    // -- Descarga código desde SCM node-ang5
@@ -51,7 +51,7 @@ node {
    // ------------------------------------
    // -- ETAPA: Nexus
    // ------------------------------------
-   stage 'Subida Nexus'
-   echo 'Subida a nexus delpaquete generado en Jenkins'
-   
+   stage ('Subida Nexus'){
+      step(echo 'Subida a nexus delpaquete generado en Jenkins')
+   }
 }
