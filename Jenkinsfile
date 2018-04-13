@@ -16,10 +16,10 @@ node {
   
            
    // -- Descarga código desde SCM node-ang5
-  echo 'Descargando estructura de SCM '
+   echo 'Descargando estructura de SCM '
    echo 'Descargando código de SCM'
-   sh 'rm -rf *'
-   checkout scm
+   //sh 'rm -rf *'
+   //checkout scm
     // -- Descarga código desde SCM lqp-ang5
   echo 'Descargando lqp de SCM'
    
