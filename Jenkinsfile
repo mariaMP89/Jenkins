@@ -16,8 +16,10 @@ node {
   
    echo 'Descargando código de SCM'
    rm -rf *
-   def scmVars = checkout scm
-        def commitHash = scmVars.GIT_COMMIT    
+   scm {
+  
+      github('es-tutorial-jenkins-2/job-dsl-plugin')
+    } 
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
 
