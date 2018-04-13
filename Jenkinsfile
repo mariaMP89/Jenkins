@@ -16,7 +16,8 @@ node {
   
    echo 'Descargando código de SCM'
    rm -rf *
-   checkout scm      
+   def scmVars = checkout scm
+        def commitHash = scmVars.GIT_COMMIT    
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
 
