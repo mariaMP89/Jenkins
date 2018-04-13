@@ -15,7 +15,7 @@ node {
    echo "var env.PATH='${env.PATH}'"
   
    echo 'Descargando código de SCM'
-   shell 'rm -rf *'
+   rm -rf *
    checkout scm      
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
