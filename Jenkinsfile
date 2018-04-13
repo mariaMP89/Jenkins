@@ -6,13 +6,20 @@ node {
    // ------------------------------------
    stage 'Build'
    
-   // -- Configura variables
-echo 'Configurando variables'
+  // -- Configura variables
+   echo 'Configurando variables'
+   
+   def mvnHome = tool 'M3'
+   env.PATH = "${mvnHome}/bin:${env.PATH}"
+   echo "var mvnHome='${mvnHome}'"
+   echo "var env.PATH='${env.PATH}'"
   
            
    // -- Descarga código desde SCM node-ang5
   echo 'Descargando estructura de SCM '
-   
+   echo 'Descargando código de SCM'
+   sh 'rm -rf *'
+   checkout scm
     // -- Descarga código desde SCM lqp-ang5
   echo 'Descargando lqp de SCM'
    
@@ -21,17 +28,13 @@ echo 'Configurando variables'
    // ------------------------------------
    stage 'Compilar'
    
-   // -- Configura variables
-   echo 'Configurando variables'
-   
+    echo 'Compilando aplicación'
+   sh 'mvn clean compile'
    
    // -- Compilando
    echo 'Compilando aplicación'
 
-   def mvnHome = tool 'M3'
-   env.PATH = "${mvnHome}/bin:${env.PATH}"
-   echo "var mvnHome='${mvnHome}'"
-   echo "var env.PATH='${env.PATH}'"
+  
    
    // ------------------------------------
    // -- ETAPA: Test
