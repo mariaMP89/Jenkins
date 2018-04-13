@@ -53,7 +53,7 @@ echo 'Configurando variables'
    // ------------------------------------
    stage ('Subida Nexus'){
      
-     shell('echo Hello World!')
+    echo 'Subida a Nexus'
       
    }
    
