@@ -34,8 +34,8 @@ node {
    // ------------------------------------
    stage ('Compilar'){
    
-    echo 'Compilando aplicación'
-   //sh 'mvn clean compile'
+   echo 'Compilando aplicación'
+   bat 'mvn clean compile'
    
    // -- Compilando
    echo 'Compilando aplicación'
