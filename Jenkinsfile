@@ -1,6 +1,7 @@
 #!groovy
-def COLOR
+
 node {
+   def COLOR
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
    // ------------------------------------
@@ -9,7 +10,7 @@ node {
         COLOR = "green"
         echo "color is $COLOR"
 
-        sh """COLOR=${COLOR}
+        bat """COLOR=${COLOR}
         echo $COLOR"""
 
     }
