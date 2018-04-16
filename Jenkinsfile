@@ -1,9 +1,19 @@
 #!groovy
-
+def COLOR
 node {
    // ------------------------------------
    // -- ETAPA: Construccion Proyecto angularCLi
    // ------------------------------------
+   stage ('color') {
+
+        COLOR = "green"
+        echo "color is $COLOR"
+
+        sh """COLOR=${COLOR}
+        echo $COLOR"""
+
+    }
+   
    stage ('Build'){
    
   // -- Configura variables
@@ -11,7 +21,7 @@ node {
    
   
    echo 'Descargando código de SCM'
-   sh 
+   
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
 
