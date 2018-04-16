@@ -9,7 +9,7 @@ node {
   // -- Configura variables
    echo 'Configurando variables'
 
-      echo '${MVN_HOME}'
+      echo 'Esta es la variable maven "${MVN_HOME}"'
    
    echo 'Descargando código de SCM'
   
