@@ -11,7 +11,7 @@ node {
    
   
    echo 'Descargando código de SCM'
-  
+   sh 
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
 
