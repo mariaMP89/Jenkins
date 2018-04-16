@@ -13,10 +13,8 @@ node {
    
    echo 'Descargando código de SCM'
   
-  // scm {
-  //
-    //  github('es-tutorial-jenkins-2/job-dsl-plugin')
-    //} 
+   sh 'rm -rf *'
+   checkout scm
    // -- Descarga código desde SCM node-ang5
    echo 'Descargando estructura de SCM '
 
