@@ -8,7 +8,7 @@ node {
    
    // -- Configura variables
    echo 'Configurando variables'
-   sh 'mvn -v'
+   mvn -v
    
    // -- Descarga código desde SCM
    echo 'Descargando código de SCM'
