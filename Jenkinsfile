@@ -2,69 +2,52 @@
 
 node {
    // ------------------------------------
-   // -- ETAPA: Construccion Proyecto angularCLi
+   // -- ETAPA: Compilar
    // ------------------------------------
-   stage ('Build'){
+   stage 'Compilar'
    
-  // -- Configura variables
+   // -- Configura variables
    echo 'Configurando variables'
-   
    def mvnHome = tool 'M3'
    env.PATH = "${mvnHome}/bin:${env.PATH}"
    echo "var mvnHome='${mvnHome}'"
    echo "var env.PATH='${env.PATH}'"
-  
-   echo 'Descargando código de SCM'
-   rm -rf *
-   scm {
-  
-      github('es-tutorial-jenkins-2/job-dsl-plugin')
-    } 
-   // -- Descarga código desde SCM node-ang5
-   echo 'Descargando estructura de SCM '
-
-    // -- Descarga código desde SCM lqp-ang5
-  echo 'Descargando lqp de SCM'
-   }
-   // ------------------------------------
-   // -- ETAPA: Compilar
-   // ------------------------------------
-   stage ('Compilar'){
    
-    echo 'Compilando aplicación'
-   //sh 'mvn clean compile'
+   // -- Descarga código desde SCM
+   echo 'Descargando código de SCM'
+   sh 'rm -rf *'
+   checkout scm
    
    // -- Compilando
    echo 'Compilando aplicación'
-
-  
-   }
+   sh 'mvn clean compile'
+   
    // ------------------------------------
    // -- ETAPA: Test
    // ------------------------------------
-   stage ('Test'){
+   stage 'Test'
    echo 'Ejecutando tests'
+   try{
+      sh 'mvn verify'
+      step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+   }catch(err) {
+      step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+      if (currentBuild.result == 'UNSTABLE')
+         currentBuild.result = 'FAILURE'
+      throw err
    }
-      // ------------------------------------
-   // -- ETAPA: Sonar
+   
    // ------------------------------------
-   stage ('Sonar'){
-   echo 'Ejecutando pruebas Sonar'
-   }
+   // -- ETAPA: Instalar
    // ------------------------------------
-   // -- ETAPA: Empaquetado y versionado
-   // ------------------------------------
-   stage ('Empaquetar y versionado'){
+   stage 'Instalar'
    echo 'Instala el paquete generado en el repositorio maven'
+   sh 'mvn install -Dmaven.test.skip=true'
    
-   }
    // ------------------------------------
-   // -- ETAPA: Nexus
+   // -- ETAPA: Archivar
    // ------------------------------------
-   stage ('Subida Nexus'){
-     
-    echo 'Subida a Nexus'
-      
-   }
-   
+   stage 'Archivar'
+   echo 'Archiva el paquete el paquete generado en Jenkins'
+   step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar, **/target/*.war', fingerprint: true])
 }
