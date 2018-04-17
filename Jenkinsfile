@@ -27,15 +27,15 @@ node {
    // ------------------------------------
    stage 'Test'
    echo 'Ejecutando tests'
-   try{
+   //try{
       sh 'mvn verify'
       step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-   }catch(err) {
+   //}catch(err) {
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-   if (currentBuild.result == 'UNSTABLE')
-     currentBuild.result = 'FAILURE'
-     throw err
-   }
+  // if (currentBuild.result == 'UNSTABLE')
+    // currentBuild.result = 'FAILURE'
+    //throw err
+   //}
    
    // ------------------------------------
    // -- ETAPA: Instalar
